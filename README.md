@@ -28,3 +28,23 @@ To shut down the services run this
 ```bash
 docker-compose down
 ```
+
+**Postman Collection**
+
+You will find a postman collection in the `postman` directory. Import this into postman to test the queries
+
+**Playground**
+
+You can use the `playground` to tryout the queries. Once the demo is up and running you can browse to the following 
+url and your ready to go.
+
+You'll see two tabs on the right side: `DOCS`, and `SCHEMA`. The `DOCS` tab shows the types and field names. The `SCHEMA` 
+shows everything in the main schama file `src/schema.graphql`
+
+```bash
+http://127.0.0.1:4004/playground
+```
+
+**Schema**
+
+To see what you can query, look at the `schema.graphql` file. 

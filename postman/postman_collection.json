@@ -1,0 +1,454 @@
+{
+	"info": {
+		"_postman_id": "452851da-8105-4dea-a61b-42d1642a179a",
+		"name": "GolfPlayers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Query",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    healthCheck {\n        code\n        message\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getById ($id: Int!) {\n    player (id: $id) {\n        id\n        playerName\n        roundsCount\n    }\n}",
+								"variables": "{\n\t\"id\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Players",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    players {\n        id\n        playerName\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getCourseById ($id: Int!) {\n    course (id: $id) {\n        id\n        courseName\n        city\n        state\n        zip\n        roundsCount\n    }\n}",
+								"variables": "{\n\t\"id\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Courses",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    courses {\n        id\n        courseName\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CourseHoles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getCourseHoles($courseId: Int!) {\n    courseHoles(courseId: $courseId) {\n        number\n        par\n        handicap\n    }\n}",
+								"variables": "{\n\t\"courseId\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Round",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getRound($id: Int!) {\n    round(id: $id) {\n        id\n        roundDate\n        score\n        holes {\n            number\n            score\n        }\n    }\n}",
+								"variables": "{\n\t\"id\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rounds",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    rounds {\n        id\n        roundDate\n        score\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RoundHoles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getRoundHoles($roundId: Int!) {\n    roundHoles(roundId: $roundId) {\n        id\n        score\n    }\n}\n",
+								"variables": "{\n\t\"roundId\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Scorecard",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query scorecard($roundIds: [Int!]!) {\n    scorecard(roundIds: $roundIds) {\n        id\n        roundDate\n        score\n        course {\n            courseName\n            par\n            holes {\n                number\n                par\n                handicap\n            }\n        }\n    }\n}",
+								"variables": "{\n\t\"roundIds\": [1, 6, 11, 16]\n}"
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mutation",
+			"item": [
+				{
+					"name": "Add Player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation addPlayer ($playerName: String!) {\n    addPlayer (playerName: $playerName) {\n        id\n        playerName\n    }\n}",
+								"variables": "{\n\t\"playerName\": \"Chippy Torres\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Round",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation addRound ($round: RoundInput!) {\n    addRound (round: $round) {\n        id\n        roundDate\n    }\n}",
+								"variables": "{\n\t\"round\": {\n\t\t\"courseId\": 5,\n\t\t\"playerId\": 4,\n\t\t\"roundDate\": \"2019-09-04\",\n\t\t\"holes\": [\n\t\t\t{\n\t\t\t\t\"number\": 1,\n\t\t\t\t\"score\": 4\n\t\t\t}, {\n\t\t\t\t\"number\": 2,\n\t\t\t\t\"score\": 3\n\t\t\t}, {\n\t\t\t\t\"number\": 3,\n\t\t\t\t\"score\": 5\n\t\t\t}, {\n\t\t\t\t\"number\": 4,\n\t\t\t\t\"score\": 5\n\t\t\t}, {\n\t\t\t\t\"number\": 5,\n\t\t\t\t\"score\": 4\n\t\t\t}, {\n\t\t\t\t\"number\": 6,\n\t\t\t\t\"score\": 5\n\t\t\t}, {\n\t\t\t\t\"number\": 7,\n\t\t\t\t\"score\": 3\n\t\t\t}, {\n\t\t\t\t\"number\": 8,\n\t\t\t\t\"score\": 4\n\t\t\t}, {\n\t\t\t\t\"number\": 9,\n\t\t\t\t\"score\": 4\n\t\t\t}, {\n\t\t\t\t\"number\": 10,\n\t\t\t\t\"score\": 4\n\t\t\t}, {\n\t\t\t\t\"number\": 11,\n\t\t\t\t\"score\": 5\n\t\t\t}, {\n\t\t\t\t\"number\": 12,\n\t\t\t\t\"score\": 4\n\t\t\t}, {\n\t\t\t\t\"number\": 13,\n\t\t\t\t\"score\": 3\n\t\t\t}, {\n\t\t\t\t\"number\": 14,\n\t\t\t\t\"score\": 5\n\t\t\t}, {\n\t\t\t\t\"number\": 15,\n\t\t\t\t\"score\": 5\n\t\t\t}, {\n\t\t\t\t\"number\": 16,\n\t\t\t\t\"score\": 4\n\t\t\t}, {\n\t\t\t\t\"number\": 17,\n\t\t\t\t\"score\": 4\n\t\t\t}, {\n\t\t\t\t\"number\": 18,\n\t\t\t\t\"score\": 4\n\t\t\t}\n\t\t]\n\t}\n}"
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Round Hole",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updateRoundHole ($roundId: Int!, $hole: RoundHoleInput!) {\n    updateRoundHole (roundId: $roundId, hole: $hole) {\n        number\n        score\n    }\n}",
+								"variables": "{\n\t\"roundId\": 1,\n\t\"hole\": {\n\t\t\"number\": 1,\n\t\t\"score\": 7\n\t}\n}"
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation addCourse ($course: CourseInput!) {\n    addCourse (course: $course) {\n        id\n        courseName\n        holes {\n            number\n            par\n            handicap\n        }\n    }\n}",
+								"variables": "{\n  \"course\": {\n    \"courseName\": \"Test Course\",\n    \"city\": \"Somewhere\",\n    \"state\": \"UT\",\n    \"zip\": \"84848\",\n    \"holes\": [\n      {\n        \"number\": 1,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 2,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 3,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 4,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 5,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 6,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 7,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 8,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 9,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 10,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 11,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 12,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 13,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 14,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 15,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 16,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 17,\n        \"par\": 4,\n        \"handicap\": 1\n      },\n      {\n        \"number\": 18,\n        \"par\": 4,\n        \"handicap\": 1\n      }\n    ]\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course Hole",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updateCourseHole ($courseId: Int!, $hole: CourseHoleInput!) {\n    updateCourseHole (courseId: $courseId, hole: $hole) {\n        number\n        par\n        handicap\n    }\n}",
+								"variables": "{\n\t\"courseId\": 7,\n\t\"hole\": {\n\t\t\"number\": 3,\n\t\t\"par\": 3,\n\t\t\"handicap\": 3\n\t}\n}"
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
