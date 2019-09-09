@@ -2,12 +2,15 @@
  * Update the given round hole's data
  *
  * @param parent
- * @param data
+ * @param args
  * @param ctx
  *
  * @return RoundHole
  */
-module.exports = async (parent, { roundId, hole: { number, score } }, { db, config }) => {
+module.exports = async (parent, args, ctx) => {
+  const { roundId, hole: { number, score } } = args
+  const { db, config: { channels }, pubsub } = ctx
+
   // Get the round's hole
   const hole = await db('RoundHoles')
     .where('roundId', roundId)
@@ -27,8 +30,15 @@ module.exports = async (parent, { roundId, hole: { number, score } }, { db, conf
   if (!result) throw new Error('The round hole could not be updated')
 
   // Fetch and return the updated round hole
-  return db('RoundHoles')
+  const roundHole = await db('RoundHoles')
     .where('roundId', roundId)
     .where('number', number)
     .first()
+
+  // Get the hole's parent round and publish it to the round updated subscription
+  const round = await db('Rounds').where('id', hole.roundId).first()
+  pubsub.publish(channels.roundUpdated, { roundUpdated: round })
+
+  // Return the updated hole
+  return roundHole
 }

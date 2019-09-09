@@ -21,9 +21,10 @@ type Mutation {
     updateCourseHole(courseId: Int!, hole: CourseHoleInput!): CourseHole
 }
 
-#type Subscription {
-#    scorecardUpdated(roundIds: [Int!]!): [Round!]!
-#}
+type Subscription {
+    roundUpdated(roundId: Int!): Round!
+    count: Int!
+}
 
 # Input Types
 input RoundInput {

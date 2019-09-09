@@ -2,24 +2,27 @@ require('dotenv').config()
 const { GraphQLServer, PubSub } = require('graphql-yoga')
 const { importSchema } = require('graphql-import')
 const resolvers = require('./resolvers')
+const { PORT } = process.env
 
 // Context items
 const db = require('./database')
+const config = require('./config')
 const helpers = require('./helpers')
 const pubsub = new PubSub()
 
-const { PORT } = process.env
-
+// Configure the graphql server
 const server = new GraphQLServer({
     typeDefs: importSchema(`${__dirname}/schema.graphql`),
     resolvers,
     context: {
         db,
+        config,
         helpers,
         pubsub
     }
 })
 
+// Server options
 const options = {
     port: PORT,
     endpoint: '/graphql',
@@ -27,8 +30,7 @@ const options = {
     playground: '/playground',
 }
 
+// Start the graphql server
 server.start(options, ({ port }) =>
-  console.log(
-    `Service is listening on port ${port}`,
-  ),
+  console.log(`Service is listening on port ${port}`),
 )

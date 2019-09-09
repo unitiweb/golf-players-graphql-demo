@@ -10,7 +10,7 @@ module.exports = {
   Date: GraphQLDate,
   Query,
   Mutation,
-  // Subscription,
+  Subscription,
   Course,
   Player,
   Round
