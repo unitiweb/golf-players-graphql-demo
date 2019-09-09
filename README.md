@@ -15,9 +15,10 @@ cd golf-players-graphql-demo
 **Install Dependencies and Setup Demo**
 
 ```bash
-npm run install
+npm install
+npm start
 npm run migrate
-npm run seed:run
+npm run seed
 docker-compose up -d
 ```
 
@@ -28,6 +29,28 @@ To shut down the services run this
 ```bash
 docker-compose down
 ```
+
+**Other Script**
+
+Open the database admin utility (phpMyAdmin)
+
+```bash
+npm run db:admin
+```
+
+Bring the stack down
+
+```bash
+npm run down
+```
+
+If you want to experient you can create a new database migration with this command
+
+```bash
+npm run migrate:create <name of the file>
+```
+
+For more information on how to create migrations you can visit: `http://knexjs.org`
 
 **Postman Collection**
 
