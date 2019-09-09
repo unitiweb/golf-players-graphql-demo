@@ -23,11 +23,12 @@ const server = new GraphQLServer({
 })
 
 // Server options
+// For more options visit https://github.com/prisma/graphql-yoga
 const options = {
     port: PORT,
     endpoint: '/graphql',
     subscriptions: '/subscriptions',
-    playground: '/playground',
+    playground: '/playground' // set to false to disable the playground
 }
 
 // Start the graphql server

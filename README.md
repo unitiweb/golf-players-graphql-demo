@@ -47,4 +47,5 @@ http://127.0.0.1:4004/playground
 
 **Schema**
 
-To see what you can query, look at the `schema.graphql` file. 
+To see what you can query, look at the `schema.graphql` file. If using the playground you can also use the `SCHEMA` 
+tab on the right.

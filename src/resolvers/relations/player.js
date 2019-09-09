@@ -10,7 +10,29 @@ module.exports = {
    * @return Int
    */
   roundsCount: async ({ id }, data, { db }) => {
-    const results = await db('Rounds').distinct().where('playerId', id).count('id as total').first()
+    const results = await db('Rounds')
+      .distinct()
+      .where('playerId', id)
+      .count('id as total')
+      .first()
+
+    return results.total
+  },
+
+  /**
+   * Get the total number of courses played at this player
+   *
+   * @param player The parent player
+   * @param data The submitted data if any
+   * @param db The database connection
+   *
+   * @return Int
+   */
+  coursesCount: async (player, data, { db }) => {
+    const results = await db('Rounds')
+      .countDistinct('courseId as total')
+      .first()
+
     return results.total
   },
 

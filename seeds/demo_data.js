@@ -146,6 +146,8 @@ const dates = [
   '2019-09-01',
   '2019-09-02',
   '2019-09-03',
+  '2019-09-04',
+  '2019-09-05',
 ]
 
 exports.seed = async (knex) => {
@@ -175,25 +177,23 @@ exports.seed = async (knex) => {
 
     for (const i in dates) {
       const roundDate = dates[i]
+      const course = courses.find(({ id }) => parseInt(id) === (parseInt(i) + 1))
+      console.log('course', course)
 
       for (const pi in players) {
         const player = players[pi]
-
-        for (const ci in courses) {
-          const course = courses[ci]
-          const round = await trx('Rounds').insert({ playerId: player.id, courseId: course.id, roundDate: roundDate })
-          const id = round[0]
-          const holes = []
-          for (let n = 1; n <= 18; n++) {
-            holes.push({
-              roundId: id,
-              number: n,
-              score: Math.random() * (maxScore - minScore) + minScore
-            })
-          }
-
-          await knex.batchInsert('RoundHoles', holes, 30).transacting(trx)
+        const round = await trx('Rounds').insert({ playerId: player.id, courseId: course.id, roundDate: roundDate })
+        const id = round[0]
+        const holes = []
+        for (let n = 1; n <= 18; n++) {
+          holes.push({
+            roundId: id,
+            number: n,
+            score: Math.random() * (maxScore - minScore) + minScore
+          })
         }
+
+        await knex.batchInsert('RoundHoles', holes, 30).transacting(trx)
       }
     }
   })

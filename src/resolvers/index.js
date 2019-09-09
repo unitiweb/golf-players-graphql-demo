@@ -5,6 +5,7 @@ const Subscription = require('./subscription')
 const Course = require('./relations/course')
 const Player = require('./relations/player')
 const Round = require('./relations/round')
+const RoundHole = require('./relations/roundHole')
 
 module.exports = {
   Date: GraphQLDate,
@@ -13,5 +14,6 @@ module.exports = {
   Subscription,
   Course,
   Player,
-  Round
+  Round,
+  RoundHole
 }

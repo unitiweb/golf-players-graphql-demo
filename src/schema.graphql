@@ -9,6 +9,7 @@ type Query {
     courseHoles(courseId: Int!): [CourseHole!]!
     round(id: Int!): Round!
     rounds: [Round!]!
+    roundHole(roundId: Int!, number: Int!): RoundHole!
     roundHoles(roundId: Int!): [RoundHole!]!
     scorecard(roundIds: [Int!]!): [Round!]!
 }
@@ -23,7 +24,6 @@ type Mutation {
 
 type Subscription {
     roundUpdated(roundId: Int!): Round!
-    count: Int!
 }
 
 # Input Types
@@ -63,6 +63,7 @@ type Player {
     id: Int!
     playerName: String!
     roundsCount: Int!
+    coursesCount: Int!
     # Relationships
     courses: [Course]
     rounds: [Round]
@@ -104,4 +105,8 @@ type RoundHole {
     id: Int!
     number: Int!
     score: Int!
+    # Relationships
+    round: Round!
+    course: Course!
+    courseHole: CourseHole!
 }

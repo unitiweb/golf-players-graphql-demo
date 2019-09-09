@@ -6,6 +6,7 @@ const courses = require('./courses')
 const courseHoles = require('./courseHoles')
 const round = require('./round')
 const rounds = require('./rounds')
+const roundHole = require('./roundHole')
 const roundHoles = require('./roundHoles')
 const scorecard = require('./scorecard')
 
@@ -18,6 +19,7 @@ module.exports = {
   courseHoles,
   round,
   rounds,
+  roundHole,
   roundHoles,
   scorecard
 }
