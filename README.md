@@ -17,7 +17,9 @@ cd golf-players-graphql-demo
 ```bash
 npm install
 npm start
-npm run migrate
+# wait until database is fully up before running the next command
+npm run migrate 
+# seed some data so you can start querying right away
 npm run seed
 ```
 

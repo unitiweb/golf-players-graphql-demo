@@ -178,7 +178,6 @@ exports.seed = async (knex) => {
     for (const i in dates) {
       const roundDate = dates[i]
       const course = courses.find(({ id }) => parseInt(id) === (parseInt(i) + 1))
-      console.log('course', course)
 
       for (const pi in players) {
         const player = players[pi]

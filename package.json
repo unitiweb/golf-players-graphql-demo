@@ -12,7 +12,7 @@
     "migrate:create": "docker-compose exec api knex migrate:make",
     "seed": "docker-compose exec api knex seed:run",
     "db:admin": "open http://127.0.0.1:4014",
-    "playground": "open http://127.0.0.1:4004",
+    "playground": "open http://127.0.0.1:4004/playground",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
