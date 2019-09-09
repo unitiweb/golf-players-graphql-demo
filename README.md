@@ -19,7 +19,6 @@ npm install
 npm start
 npm run migrate
 npm run seed
-docker-compose up -d
 ```
 
 **Stop the Demo**
@@ -36,6 +35,12 @@ Open the database admin utility (phpMyAdmin)
 
 ```bash
 npm run db:admin
+```
+
+See the docker process status
+
+```bash
+npm run ps
 ```
 
 Bring the stack down
