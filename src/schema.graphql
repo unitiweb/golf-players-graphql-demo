@@ -1,0 +1,106 @@
+scalar Date
+
+type Query {
+    healthCheck: Message!
+    player(id: Int!): Player!
+    players: [Player!]!
+    course(id: Int!): Course!
+    courses: [Course!]!
+    courseHoles(courseId: Int!): [CourseHole!]!
+    round(id: Int!): Round!
+    rounds: [Round!]!
+    roundHoles(roundId: Int!): [RoundHole!]!
+    scorecard(roundIds: [Int!]!): [Round!]!
+}
+
+type Mutation {
+    addPlayer(playerName: String!): Player!
+    addRound(round: RoundInput!): Round!
+    updateRoundHole(roundId: Int!, hole: RoundHoleInput!): RoundHole
+    addCourse(course: CourseInput!): Course!
+    updateCourseHole(courseId: Int!, hole: CourseHoleInput!): CourseHole
+}
+
+#type Subscription {
+#    scorecardUpdated(roundIds: [Int!]!): [Round!]!
+#}
+
+# Input Types
+input RoundInput {
+    playerId: Int!
+    courseId: Int!
+    roundDate: Date!
+    holes: [RoundHoleInput]
+}
+
+input RoundHoleInput {
+    number: Int!
+    score: Int!
+}
+
+input CourseInput {
+    courseName: String!
+    city: String!
+    state: String!
+    zip: String!
+    holes: [CourseHoleInput]
+}
+
+input CourseHoleInput {
+    number: Int!
+    par: Int!
+    handicap: Int!
+}
+
+# Object Types
+type Message {
+    code: String!
+    message: String!
+}
+
+type Player {
+    id: Int!
+    playerName: String!
+    roundsCount: Int!
+    # Relationships
+    courses: [Course]
+    rounds: [Round]
+}
+
+type Course {
+    id: Int!
+    courseName: String!
+    city: String!
+    state: String!
+    zip: String
+    # Calculations
+    roundsCount: Int!
+    par: Int!
+    # Relationships
+    rounds: [Round]!
+    holes: [CourseHole]!
+    players: [Player]!
+}
+
+type CourseHole {
+    id: Int!
+    number: Int!
+    par: Int!
+    handicap: Int!
+}
+
+type Round {
+    id: Int!
+    roundDate: Date!
+    score: Int!
+    # Relationships
+    player: Player!
+    course: Course!
+    holes: [RoundHole]!
+}
+
+type RoundHole {
+    id: Int!
+    number: Int!
+    score: Int!
+}

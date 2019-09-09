@@ -1,0 +1,52 @@
+version: "3.5"
+
+services:
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PORT: "${PORT}"
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - .:/app
+    command: ["npm", "run", "watch"]
+    depends_on:
+      - mysql
+    networks:
+      - overlay
+
+  mysql:
+    image: mysql:8
+    ports:
+      - "14206:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./.docker-storage/db/auth:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    networks:
+      - overlay
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "4216:80"
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOSTS: mysql
+      PMA_USER: ${DB_USER}
+      PMA_PASSWORD: ${DB_PASS}
+    depends_on:
+      - mysql
+    networks:
+      - overlay
+
+networks:
+  overlay:
