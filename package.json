@@ -2,6 +2,9 @@
   "name": "golf-players",
   "version": "1.0.0",
   "description": "Demo api using graphql",
+  "author": "",
+  "license": "ISC",
+  "repository": "git@github.com:unitiweb/golf-players-graphql-demo.git",
   "main": "src/index.js",
   "scripts": {
     "watch": "nodemon src/index.js --ext js,graphql",
@@ -11,13 +14,10 @@
     "migrate": "docker-compose exec api knex migrate:latest",
     "migrate:create": "docker-compose exec api knex migrate:make",
     "seed": "docker-compose exec api knex seed:run",
-    "db:admin": "open http://127.0.0.1:4014",
-    "playground": "open http://127.0.0.1:4004/playground",
+    "db:admin": "node ./scripts/command.js db:admin",
+    "playground": "node ./scripts/command.js playground",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
-  "repository": "git@github.com:unitiweb/golf-players-graphql-demo.git",
   "dependencies": {
     "dotenv": "^8.1.0",
     "graphql": "^0.13.2",

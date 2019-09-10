@@ -13,6 +13,12 @@ services:
     volumes:
       - .:/app
     command: ["npm", "run", "watch"]
+    healthcheck:
+      test: curl -f http://api
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 120s
     depends_on:
       - mysql
     networks:
@@ -31,6 +37,11 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASS}
+    healthcheck:
+      test: mysqladmin -u${DB_USER:-root} -p${DB_PASS:-password1} ping
+      interval: 5s
+      timeout: 10s
+      retries: 30
     networks:
       - overlay
 
@@ -43,6 +54,12 @@ services:
       PMA_HOSTS: mysql
       PMA_USER: ${DB_USER}
       PMA_PASSWORD: ${DB_PASS}
+    healthcheck:
+      test: curl -f http://phpmyadmin
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 120s
     depends_on:
       - mysql
     networks:
