@@ -8,9 +8,11 @@
   "main": "src/index.js",
   "scripts": {
     "watch": "nodemon src/index.js --ext js,graphql",
+    "build": "node ./scripts/command.js build",
     "start": "docker-compose up -d",
     "ps": "docker-compose ps",
     "down": "docker-compose down",
+    "logs": "docker-compose logs -f",
     "migrate": "docker-compose exec api knex migrate:latest",
     "migrate:create": "docker-compose exec api knex migrate:make",
     "seed": "docker-compose exec api knex seed:run",

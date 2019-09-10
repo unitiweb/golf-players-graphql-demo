@@ -13,11 +13,15 @@ if (Array.isArray(args) && args.length >= 2) {
 if (!command) throw new Error('The command was not recognized')
 
 if (command === 'db:admin') {
+
   // Execute the db:admin command
   const { DB_ADMIN_PORT } = process.env
   spawnSync('open', [`http://127.0.0.1:${DB_ADMIN_PORT}`]);
+
 } else if (command === 'playground') {
+
   // Execute the playground command
   const { PORT } = process.env
   spawnSync('open', [`http://127.0.0.1:${PORT}/playground`]);
+
 }
