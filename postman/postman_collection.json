@@ -190,7 +190,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query getRound($id: Int!) {\n    round(id: $id) {\n        id\n        roundDate\n        score\n        holes {\n            number\n            score\n        }\n    }\n}",
+								"query": "query getRound($id: Int!) {\n    round(id: $id) {\n        id\n        roundDate\n        score\n    }\n}",
 								"variables": "{\n\t\"id\": 1\n}"
 							}
 						},
@@ -221,6 +221,35 @@
 							"graphql": {
 								"query": "query {\n    rounds {\n        id\n        roundDate\n        score\n    }\n}",
 								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4004/graphql",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4004",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RoundHole",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getRoundHole($roundId: Int!, $number: Int!) {\n    roundHole(roundId: $roundId, number: $number) {\n        id\n        score\n    }\n}\n",
+								"variables": "{\n\t\"roundId\": 1,\n\t\"number\": 1\n}"
 							}
 						},
 						"url": {
@@ -277,8 +306,8 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query scorecard($roundIds: [Int!]!) {\n    scorecard(roundIds: $roundIds) {\n        id\n        roundDate\n        score\n        course {\n            courseName\n            par\n            holes {\n                number\n                par\n                handicap\n            }\n        }\n    }\n}",
-								"variables": "{\n\t\"roundIds\": [1, 6, 11, 16]\n}"
+								"query": "query scorecard($roundIds: [Int!]!) {\n    scorecard(roundIds: $roundIds) {\n        id\n        roundDate\n        score\n    }\n}",
+								"variables": "{\n\t\"roundIds\": [1, 2, 3, 4]\n}"
 							}
 						},
 						"url": {
@@ -312,7 +341,7 @@
 							"mode": "graphql",
 							"graphql": {
 								"query": "mutation addPlayer ($playerName: String!) {\n    addPlayer (playerName: $playerName) {\n        id\n        playerName\n    }\n}",
-								"variables": "{\n\t\"playerName\": \"Chippy Torres\"\n}"
+								"variables": "{\n\t\"playerName\": \"Tom Watson\"\n}"
 							}
 						},
 						"url": {
@@ -428,7 +457,7 @@
 							"mode": "graphql",
 							"graphql": {
 								"query": "mutation updateCourseHole ($courseId: Int!, $hole: CourseHoleInput!) {\n    updateCourseHole (courseId: $courseId, hole: $hole) {\n        number\n        par\n        handicap\n    }\n}",
-								"variables": "{\n\t\"courseId\": 7,\n\t\"hole\": {\n\t\t\"number\": 3,\n\t\t\"par\": 3,\n\t\t\"handicap\": 3\n\t}\n}"
+								"variables": "{\n\t\"courseId\": 6,\n\t\"hole\": {\n\t\t\"number\": 3,\n\t\t\"par\": 3,\n\t\t\"handicap\": 3\n\t}\n}"
 							}
 						},
 						"url": {
