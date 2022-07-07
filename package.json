@@ -27,7 +27,7 @@
     "graphql-iso-date": "^3.6.1",
     "graphql-yoga": "^1.14.10",
     "knex": "^0.19.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mysql": "^2.17.1",
     "uuid": "^3.3.2"
   },
